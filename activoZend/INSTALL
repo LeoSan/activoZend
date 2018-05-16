@@ -1,0 +1,14 @@
+instalar servidor apache ( a su eleccion )
+    - php  5.3.2+
+    - mysql ( opcional )
+
+descargar e instalar Composer
+    https://getcomposer.org/doc/00-intro.md
+
+descargar e instalar Zend
+	composer require zendframework/zendframework1  ( Version 1.12 )
+
+
+instalar y/o habilitar  controlador oci8  ( oracle )
+    ;extension=php_oci8.dll
+    ;extension=php_oci8_11.g.dll

@@ -1,0 +1,290 @@
+
+<!--CONTENIDO-->
+<div class="content">
+    <div class="card card-table">
+        <div class="card-header">Listado de solicitudes
+            <div class="tools">
+                <button data-toggle="modal" data-target="#form-bp1" class="btn btn-space btn-secondary active"><i class="icon mdi mdi-collection-plus"></i> Registrar </button>
+            </div>
+        </div>
+        <div class="card-header-divider"></div>
+        <div class="card-body">
+            <!-- Inicio de tabla -->
+            <table id="dt_solicitud" class="display">
+                <thead>
+                <tr>
+                    <th>CO. TRACKING</th>
+                    <th>FECHA</th>
+                    <th>ACTIVO</th>
+                    <th>MOTIVO</th>
+                    <th>ESTATUS</th>
+                    <th>ACCIÓN</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <!-- FIN  Inicio de tabla -->
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="<?php echo $this->baseUrl; ?>/js/activo/view-solicitud.js"></script>
+
+<!--MODAL-->
+<div id="form-bp1" tabindex="-1" role="dialog" class="modal fade colored-header colored-header-success"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="formSolicitud" name="formSolicitud">
+            <!-- Campos hidden -->
+            <input id="inptProceso" name="inptProceso" type="hidden" value="Guardar"/>
+            <input id="inpId" name="inpId" type="hidden"/>
+            <input id="inpSolicitante" name="inpSolicitante" type="hidden" value="20112"/>
+
+            <div class="modal-content">
+                <div class="modal-header modal-header-colored">
+                    <h3 id="bntTitulomodal" class="modal-title"><i class="icon mdi mdi-collection-plus"></i> Registrar
+                        Solicitud</h3>
+                    <button name="btnCerrarX" type="button" data-dismiss="modal" aria-hidden="true"
+                            class="close md-close"><span
+                            class="mdi mdi-close"> </span></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span> Categoría del Activo:</h5></label>
+                        <input id="inpCategoria" name="inpCategoria" type="hidden"/>
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"><b class="border-notch notch"></b>
+                        </div>
+                        <!-- Componente Mesj-->
+
+                        <select id="selCategoria" name="selCategoria" class="form-control">
+                            <option value="default">[Seleccione]</option>
+                            <?php foreach ($this->CATEGORIA as $key => $val): ?>
+                                <option
+                                    value="<?php echo $this->escape($val['ID_CACT_CATEGORIA']) ?>"><?php echo $this->escape($val['NOM_CATEGORIA']) ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span> Tipo de activo: </h5></label>
+                        <input id="inpTipoActivo" name="inpTipoActivo" type="hidden"/>
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"><b class="border-notch notch"></b>
+                        </div>
+                        <!-- Componente Mesj-->
+
+                        <select id="selTipoActivo" name="selTipoActivo" class="form-control">
+                            <option value="default">[Seleccione]</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span> Motivo de la solicitud: </h5></label>
+                        <input id="inpMotivo" name="inpMotivo" type="hidden"/>
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"><b class="border-notch notch"></b>
+                        </div>
+                        <!-- Componente Mesj-->
+
+                        <select id="selMotivo" name="selMotivo" class="form-control">
+                            <option value="default">[Seleccione]</option>
+                            <?php foreach ($this->MOTIVO as $key => $val): ?>
+                                <option
+                                    value="<?php echo $this->escape($val['ID_CACT_CATEGORIA']) ?>"><?php echo $this->escape($val['NOM_CATEGORIA']) ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span> Cantidad :</h5></label>
+                        <input id="inpCantidad" name="inpCantidad" type="hidden"/>
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"><b class="border-notch notch"></b>
+                        </div>
+                        <!-- Componente Mesj-->
+                        <select id="selCantidad" name="selCantidad" class="form-control">
+                            <option value="default">[Seleccione]</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span> Descripción motivo de la solicitud :</h5>
+                        </label>
+                        <textarea id="inpDes" name="inpDes" placeholder="Ingrese una descripción del proveedor"
+                                  class="form-control soloLetrasNum" cols="3" rows="3"></textarea>
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"><b class="border-notch notch"></b>
+                        </div>
+                        <!-- Componente Mesj-->
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="custom-control">
+                                ( * ) <span
+                                    class="custom-control-label">Los campos con asterisco son obligatorios.</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label id="msjRespuesta" class="custom-control"> </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCerrar" name="btnCerrar" type="button" data-dismiss="modal"
+                            class="btn btn-default md-close">Cerrar
+                    </button>
+                    <button id="btnRegistrar" name="btnRegistrar" type="submit" class="btn btn-success">Registar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--MODAL-->
+<div id="modalBitacora" tabindex="-1" role="dialog" class="modal fade colored-header colored-header-success"
+     aria-hidden="true">
+    <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-colored">
+                    <h3 id="bntTitulomodal" class="modal-title"><i class="mdi mdi-format-align-justify"></i> Bitácora  Solicitud</h3>
+                    <button name="btnCerrarX" type="button" data-dismiss="modal" aria-hidden="true"
+                            class="close md-close"><span
+                            class="mdi mdi-close"> </span></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="card card-table">
+                        <div class="card-header">
+                            <div class="title">Últimos Procesos</div>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th style="width:20%;">Usuario</th>
+                                    <th style="width:40%;">Comentario</th>
+                                    <th>Fecha</th>
+                                    <th>Estatus</th>
+                                </tr>
+                                </thead>
+                                <tbody id="bitacora">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCerrar" name="btnCerrar" type="button" data-dismiss="modal"
+                            class="btn btn-default md-close">Cerrar
+                    </button>
+                </div>
+            </div>
+    </div>
+</div>
+
+<!--MODAL-->
+<div id="form-bp2" tabindex="-1" role="dialog" class="modal fade colored-header colored-header-warning"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="formSolicitudRecha" name="formSolicitudRecha">
+            <!-- Campos hidden -->
+            <input id="inptProceso" name="inptProceso" type="hidden" value="Editar"/>
+            <input id="inpIdTracking" name="inpIdTracking" type="hidden" />
+            <input id="inpSolicitante" name="inpSolicitante" type="hidden" value="20112"/>
+
+            <div class="modal-content">
+                <div class="modal-header modal-header-colored">
+                    <h3 id="bntTitulomodal" class="modal-title"><i class="icon mdi mdi-edit"></i> Rechazar Solicitud</h3>
+                    <button name="btnCerrarX" type="button" data-dismiss="modal" aria-hidden="true"
+                            class="close md-close"><span
+                            class="mdi mdi-close"> </span></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label><h5> Tipo de activo: </h5></label>
+                        <input id="inpTipoActivoRecha" name="inpTipoActivoRecha" class="form-control" type="text" value="" disabled/>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label><h5> Motivo de la solicitud: </h5></label>
+                        <input id="inpMotivoRecha" name="inpMotivoRecha" type="text" class="form-control" value="" disabled />
+                    </div>
+
+
+                    <div class="form-group">
+                        <label><h5> Cantidad :</h5></label>
+                        <input id="inpCantidadRecha" name="inpCantidadRecha" type="text" class="form-control" value="" disabled />
+                    </div>
+
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span> Descripción motivo de la solicitud :</h5>
+                        </label>
+                        <textarea id="inpDes" name="inpDes" placeholder="Ingrese una descripción del proveedor"
+                                  class="form-control soloLetrasNum" cols="3" rows="3"></textarea>
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"><b class="border-notch notch"></b>
+                        </div>
+                        <!-- Componente Mesj-->
+                    </div>
+
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span> Estatus: </h5></label>
+                        <input id="inpEstatus" name="inpEstatus" type="hidden"/>
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"><b class="border-notch notch"></b>
+                        </div>
+                        <!-- Componente Mesj-->
+
+                        <select id="selEstatus" name="selEstatus" class="form-control">
+                            <option value="default">[Seleccione]</option>
+                            <?php foreach ($this->ESTATUS as $key => $val): ?>
+                                <option value="<?php echo $this->escape($val['ID_ESTATUS']) ?>"><?php echo $this->escape($val['NOM_ESTATUS']) ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="custom-control">
+                                ( * ) <span
+                                    class="custom-control-label">Los campos con asterisco son obligatorios.</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label id="msjRespuestaRecha" class="custom-control"> </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCerrar" name="btnCerrar" type="button" data-dismiss="modal" class="btn btn-default md-close">Cerrar </button>
+                    <button id="btnRechazar" name="btnRechazar" type="submit" class="btn btn-warning">Rechazar Solicitud </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

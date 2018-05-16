@@ -1,0 +1,389 @@
+<!--  Menu    -->
+<div class="be-left-sidebar">
+    <div class="left-sidebar-wrapper">
+        <div class="left-sidebar-spacer">
+            <div class="left-sidebar-scroll">
+                <div class="left-sidebar-content">
+                    <ul class="sidebar-elements">
+
+                        <li class="divider">Menu</li>
+
+                        <div class="panel-group" role="tablist">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="collapseListGroupHeading2">
+                                    <a href="#collapseListGroup2" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseListGroup2"> <i class="icon mdi mdi-layers"></i><span> Usuario</span> </a>
+                                </div>
+                                <div class="panel-collapse collapse in" role="tabpanel" id="collapseListGroup2" aria-labelledby="collapseListGroupHeading2" aria-expanded="true">
+                                    <ul class="list-group">
+                                        <li class="list-group-item"><a href="http://localhost/GitDesarrollo/activoZend/public/controlactivos/index/view-solicitud" role="button">Generar Solicitud</a> </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel-group" role="tablist">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="collapseListGroupHeading3">
+                                    <a href="#collapseListGroup3" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseListGroup3"> <i class="icon mdi mdi-layers"></i><span> Administración </span> </a>
+                                </div>
+                                <div class="panel-collapse collapse in" role="tabpanel" id="collapseListGroup3" aria-labelledby="collapseListGroupHeading3" aria-expanded="true">
+                                    <ul class="list-group">
+                                        <li class="list-group-item"><a href="http://localhost/GitDesarrollo/activoZend/public/controlactivos/index/view-admin-activo" role="button">Admin de Inventario</a></li>
+                                        <li class="list-group-item"><a href="http://localhost/GitDesarrollo/activoZend/public/controlactivos/index/view-fisico" role="button"> Cat. Estado físico</a></li>
+                                        <li class="list-group-item"><a href="http://localhost/GitDesarrollo/activoZend/public/controlactivos/index/view-metodo-solicitud" role="button"> Cat. Motivo de solicitud</a></li>
+                                        <li class="list-group-item"><a href="http://localhost/GitDesarrollo/activoZend/public/controlactivos/index/view-tipo-asignacion" role="button"> Cat. Tipo de asignación</a></li>
+                                        <li class="list-group-item"><a href="http://localhost/GitDesarrollo/activoZend/public/controlactivos/index/view-categoria-activo" role="button"> Categoria activo</a></li>
+                                        <li class="list-group-item"><a href="http://localhost/GitDesarrollo/activoZend/public/controlactivos/index/view-tipo-activo" role="button"> Cat. Tipo de activo</a></li>
+                                        <li class="list-group-item"><a href="http://localhost/GitDesarrollo/activoZend/public/controlactivos/index/view-ubicacion" role="button"> Cat. Ubicación</a> </li>
+                                        <li class="list-group-item"><a href="http://localhost/GitDesarrollo/activoZend/public/controlactivos/index/view-proveedor" role="button"> Cat. Proveedor</a>  </li>
+                                        <li class="list-group-item"><a
+                                                href="http://localhost/GitDesarrollo/activoZend/public/controlactivos/index/view-solicitud-admin/idEstatus/0"
+                                                role="button">Gestionar Solicitud</a></li>
+                                        <li class="list-group-item">Reporte</li>
+                                        <li class="list-group-item">Generacion de responsivas</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--CONTENIDO-->
+<div class="be-content">
+    <!-- Titulo Modulo -->
+    <div class="card-header card-header-divider">Administración Activo<span class="card-subtitle">Este módulo permite registrar, editar y deshabilitar, realizar carga masiva de los activos de la empresa.</span></div>
+
+    <div class="main-content container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <!-- Inicio Botones -->
+                <div class="mt-2 mb-2">
+                    <button data-toggle="modal" data-target="#form-bp1" class="btn btn-space btn-success btn-big"><i
+                            class="icon mdi mdi-collection-plus"></i> Registrar
+                    </button>
+                    <button data-toggle="modal" data-target="#form-bp2" class="btn btn-space btn-primary btn-big"><i class="icon mdi mdi-collection-text"></i>
+                        Masiva
+                    </button>
+                </div>
+
+                <!-- Titulo Modulo -->
+                <div class="card card-table">
+                    <div class="card-body">
+                        <!-- Inicio de tabla -->
+                        <table id="dt_proveedor" class="display">
+                            <thead>
+                            <tr>
+                                <th>COD.BARRA</th>
+                                <th>NO.SERIE</th>
+                                <th>MARCA</th>
+                                <th>MODELO</th>
+                                <th>EST.FÍSICO</th>
+                                <th>SUCURSAL</th>
+                                <th>UBICACIÓN</th>
+                                <th>ESTATUS</th>
+                                <th>ACCIÓN</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <!-- FIN  Inicio de tabla -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="<?php echo $this->baseUrl; ?>/js/activo/view-admin-activo.js"></script>
+
+<!--MODAL-->
+<div id="form-bp1" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" class="modal fade colored-header colored-header-success"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="formAdminActivo" name="formAdminActivo">
+            <!-- Campos hidden -->
+            <input id="inptProceso" name="inptProceso" type="hidden" value="Guardar"/>
+            <input id="inpId" name="inpId" type="hidden" />
+
+            <div class="modal-content">
+                <div class="modal-header modal-header-colored">
+                    <h3 id="bntTitulomodal" class="modal-title"> <i class="icon mdi mdi-collection-plus"></i> Registrar Activo.</h3>
+                    <button name="btnCerrarX" type="button" data-dismiss="modal" aria-hidden="true" class="close md-close"><span
+                            class="mdi mdi-close"> </span></button>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span>  Categoria Activos :</h5></label>
+                        <input id="inpCategoria" name="inpCategoria" type="hidden"/>
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"> <b class="border-notch notch"></b>
+                        </div>
+                        <!-- Componente Mesj-->
+                        <select id="selCategoria" name="selCategoria" class="form-control">
+                            <option value="default">[Seleccione]</option>
+                            <?php foreach ($this->CATEGORIA as $key => $val): ?>
+                                <option value="<?php echo $this->escape($val['ID_CACT_CATEGORIA'])?>" ><?php echo $this->escape($val['NOM_CATEGORIA'])?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span>  Tipos de Activos :</h5></label>
+                        <input id="inpTipoActivo" name="inpTipoActivo" type="hidden"/>
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"> <b class="border-notch notch"></b>
+                        </div>
+                        <!-- Componente Mesj-->
+                        <select id="selTipoActivo" name="selTipoActivo" class="form-control">
+                            <option value="default">[Seleccione]</option>
+                            <?php foreach ($this->TIPO_ACTIVO as $key => $val): ?>
+                                <option value="<?php echo $this->escape($val['ID_CACT_CATEGORIA'])?>" ><?php echo $this->escape($val['NOM_CATEGORIA'])?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span>  Tipos de Asignación :</h5></label>
+                        <input id="inpTipoAsignacion" name="inpTipoAsignacion" type="hidden"/>
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"> <b class="border-notch notch"></b>
+                        </div>
+                        <!-- Componente Mesj-->
+                        <select id="selTipoAsignacion" name="selTipoAsignacion" class="form-control">
+                            <option value="default">[Seleccione]</option>
+                            <?php foreach ($this->TIPO_ASIGNACION as $key => $val): ?>
+                                <option value="<?php echo $this->escape($val['ID_CACT_CATEGORIA'])?>" ><?php echo $this->escape($val['NOM_CATEGORIA'])?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span>  Estado Físico del Activo :</h5></label>
+                        <input id="inpEstadoFisico" name="inpEstadoFisico" type="hidden"/>
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"> <b class="border-notch notch"></b>
+                        </div>
+                        <!-- Componente Mesj-->
+                        <select id="selEstadoFisico" name="selEstadoFisico" class="form-control">
+                            <option value="default">[Seleccione]</option>
+                            <?php foreach ($this->ESTADO_FISICO as $key => $val): ?>
+                                <option value="<?php echo $this->escape($val['ID_CACT_CATEGORIA'])?>" ><?php echo $this->escape($val['NOM_CATEGORIA'])?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span> Marca :</h5></label>
+                        <input id="inpMarca" name="inpMarca" type="text" placeholder="Ingrese marca del activo" class="form-control soloLetrasNum">
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"> <b class="border-notch notch"></b>
+                        </div>
+                        <!-- Componente Mesj-->
+                    </div>
+
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span> Modelo :</h5></label>
+                        <input id="inpModelo" name="inpModelo" type="text" placeholder="Ingrese modelo del activo" class="form-control soloLetrasNum">
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"> <b class="border-notch notch"></b>
+                        </div>
+                        <!-- Componente Mesj-->
+                    </div>
+
+
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span> Código Barras Pendulum :</h5></label>
+                        <input id="inpCodBarra" name="inpCodBarra" type="text" placeholder="Ingrese código barras" class="form-control soloLetrasNum">
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"> <b class="border-notch notch"></b>
+                        </div>
+                        <!-- Componente Mesj-->
+                    </div>
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span> Numero de serie :</h5></label>
+                        <input id="inpNumSerie" name="inpNumSerie" type="text" placeholder="Ingrese numero de serie" class="form-control soloLetrasNum">
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"> <b class="border-notch notch"></b>
+                        </div>
+                        <!-- Componente Mesj-->
+                    </div>
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span>  Proveedor :</h5></label>
+                        <input id="inpProveedor" name="inpProveedor" type="hidden"/>
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"> <b class="border-notch notch"></b>
+                        </div>
+                        <!-- Componente Mesj-->
+                        <select id="selProveedor" name="selProveedor" class="form-control">
+                            <option value="default">[Seleccione]</option>
+                            <?php foreach ($this->PROVEEDOR["data"] as $key => $val): ?>
+                                <option value="<?php echo $this->escape($val['ID_PROVEEDOR'])?>" ><?php echo $this->escape($val['NOM_PROVEEDOR'])?></option>
+                            <?php endforeach; ?>
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span> Fecha de compra :</h5></label>
+                        <input id="inpFechaCompra" name="inpFechaCompra" type="text" placeholder="Fecha Compra DD/MM/YYYY"  maxlength="10" class="form-control soloFecha datepicker">
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"> <b class="border-notch notch"></b>
+                        </div>
+                        <!-- Componente Mesj-->
+                    </div>
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span> Número de factura :</h5></label>
+                        <input id="inpNumFactura" name="inpNumFactura" type="text" placeholder="Ingrese numero de factura" class="form-control soloLetrasNum">
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"> <b class="border-notch notch"></b>
+                        </div>
+                        <!-- Componente Mesj-->
+                    </div>
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span>  Sucursal :</h5></label>
+                        <input id="inpSucursal" name="inpSucursal" type="hidden"/>
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"> <b class="border-notch notch"></b>
+                        </div>
+
+                        <!-- Componente Mesj-->
+                        <select id="selSucursal" name="selSucursal" class="form-control">
+                            <option value="default">[Seleccione]</option>
+                            <?php foreach ($this->SUCURSAL["data"] as $key => $val): ?>
+                                <option value="<?php echo $this->escape($val['IDSUCURSAL'])?>" ><?php echo $this->escape($val['NMSUCURSAL'])?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span>  Tipo  ubicación :</h5></label>
+                        <input id="inpUbicacion" name="inpUbicacion" type="hidden"/>
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"> <b class="border-notch notch"></b>
+                        </div>
+                        <!-- Componente Mesj-->
+                        <select id="selUbicacion" name="selUbicacion" class="form-control">
+                            <option value="default">[Seleccione Sucursal]</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span>  Piso :</h5></label>
+                        <input id="inpPiso" name="inpPiso" type="hidden"/>
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"> <b class="border-notch notch"></b>
+                        </div>
+                        <!-- Componente Mesj-->
+                        <select id="selPiso" name="selPiso" class="form-control">
+                            <option value="default">[Seleccione Tipo de Ubicación]</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span>  Nombre ubicación :</h5></label>
+                        <input id="inpNombreUbiacion" name="inpNombreUbiacion" type="hidden"/>
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"> <b class="border-notch notch"></b>
+                        </div>
+                        <!-- Componente Mesj-->
+                        <select id="selNomUbi" name="selNomUbi" class="form-control">
+                            <option value="default">[Seleccione]</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span> Descripción :</h5></label>
+                        <textarea id="inpDes" name="inpDes" placeholder="Ingrese una descripción del proveedor" class="form-control soloLetrasNum" cols="3" rows="3" ></textarea>
+                        <!-- Componente Mesj-->
+                        <div class="error" style="display:none"> <b class="border-notch notch"></b>
+                        </div>
+                        <!-- Componente Mesj-->
+                    </div>
+
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="custom-control">
+                                ( * )  <span class="custom-control-label">Los campos con asterisco son obligatorios.</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label id="msjRespuesta" class="custom-control">  </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCerrar" name="btnCerrar" type="button" data-dismiss="modal" class="btn btn-default md-close">Cancel</button>
+                    <button id="btnRegistrar" name="btnRegistrar" type="submit" class="btn btn-success">Registar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<!--MODAL CARGA MASIVA-->
+<div id="form-bp2" tabindex="-1" role="dialog" class="modal fade colored-header colored-header-primary"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="formMasiva" name="formMasiva">
+            <!-- Campos hidden -->
+            <input id="inpUrl" name="inpUrl" type="hidden" >
+            <input id="inpNombreArchivo" name="inpNombreArchivo" type="hidden" >
+
+            <div class="modal-content">
+                <div class="modal-header modal-header-colored">
+                    <h3 id="bntTitulomodalCarga" class="modal-title"> <i class="icon mdi mdi-collection-text"></i> Carga masiva de activos.</h3>
+                    <button name="btnCerrarX" type="button" data-dismiss="modal" aria-hidden="true" class="close md-close"><span
+                            class="mdi mdi-close"> </span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>NOTA: Instrucciones de la carga de archivo. Descarga Layout <a href="http://localhost/GitDesarrollo/activoZend/public/doc/LAYOUT_CARGA_MASIVA_ACTIVO.csv" role="button"> Aqui </a> </label>
+                        <span class="help-block">El archivo debe ser CSV delimitado por COMAS. Sólo debe tener cuenta e importe.</span>
+                        <span class="help-block">El nombre del archivo NO debe tener caracteres especiales, Ñ, ñ, epacios.</span>
+                        <span class="help-block">El tamaño del nommbre del archivo NO debe revasar los 15 caracteres.</span>
+
+                    </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span> Ingrese SCV :</h5></label>
+                        <input type="file" name="file_csv" id="file_csv" class="form-control"/>
+
+                    </div>
+                    <div class="form-group">
+                        <label><h5><span class="glyphicon-red"> ( * )</span> Procesar SCV :</h5></label>
+                        <br>
+                        <input id="btnCargarMasiva" class="btn btn-info" value="Subir CSV"/><br>
+                        <br>
+                        <input id="btnCargarMasivaProcesar" class="btn btn-success" disabled="disabled" value="Procesar Datos"/><br>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="custom-control">
+                                ( * )  <span class="custom-control-label">Los campos con asterisco son obligatorios.</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label id="msjRespuestaCarga" class="custom-control">  </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCerrar" name="btnCerrar" type="button" data-dismiss="modal" class="btn btn-default md-close">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+
+form label.error, label.error {
+    color: red;
+    font-style: italic;
+    color: red;
+    font-style: italic;
+    font-weight: bold;
+    background-color: bisque;
+    width: 439px;
+    padding: 5px;
+    border: 1px solid red;
+    margin-left: 10%;
+
+}
+.glyphicon-red {
+    color: red !important;
+}
+
+.btnAccionEdit{
+    cursor: pointer;
+    color: #0c57d3;
+    margin-right: 10px;
+}
+
+.btnAccionDel{
+    cursor: pointer;
+    color: #d36a66;
+    margin-right: 10px;
+}
+.btnAccionBitacora{
+    cursor: pointer;
+    color: #58af54;
+    margin-right: 10px;
+}
+
+
+.btnAccionEdit:hover{
+    color: blue;
+    -moz-transform: scale(2.2);
+    -webkit-transform: scale(2.2);
+    -o-transform: scale(2.2);
+    -ms-transform: scale(2.2);
+    transform: scale(2.2)
+}
+
+.btnAccionDel:hover{
+    color: #ff130a;
+    -moz-transform: scale(2.2);
+    -webkit-transform: scale(2.2);
+    -o-transform: scale(2.2);
+    -ms-transform: scale(2.2);
+    transform: scale(2.2)
+}
+
+.pCenter{
+    text-align: center !important;
+}
+
+.btnAccionBitacora:hover{
+    color: #2d6327;
+    -moz-transform: scale(2.2);
+    -webkit-transform: scale(2.2);
+    -o-transform: scale(2.2);
+    -ms-transform: scale(2.2);
+    transform: scale(2.2)
+}
+
+.formatoNombre{
+    text-transform: capitalize;
+}
